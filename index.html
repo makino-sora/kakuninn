@@ -62,15 +62,15 @@
         var cylinder = new THREE.Mesh( cylinderGeometry, mat2 );
         cylinder.position.set( 0, 0.1, 0 );
         scene.add( cylinder );
-        var geometry = new THREE.DodecahedronGeometry(0.1);
+        var geometry = new THREE.DodecahedronGeometry(0.3);
         var box = new THREE.Mesh(geometry, mat2);
         box.position.set(0,0.125,0);
         scene.add(box);
-        var geometry = new THREE.IcosahedronGeometry(0.1);
+        var geometry = new THREE.IcosahedronGeometry(1);
         var box2 = new THREE.Mesh(geometry, mat2);
         box2.position.set(0.8,0.11,0.5);
         scene.add(box2);
-        var geometry = new THREE.DodecahedronGeometry(0.1);
+        var geometry = new THREE.DodecahedronGeometry(1);
         var box3 = new THREE.Mesh(geometry, mat2);
         box3.position.set(0.8,0.11,0.5);
         scene.add(box3);
