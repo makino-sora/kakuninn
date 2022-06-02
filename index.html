@@ -25,7 +25,7 @@
         // カメラを作成
         const camera = new THREE.PerspectiveCamera(45, width / height);
         // カメラの初期座標を設定
-        camera.position.set(0, 0, 5);
+        camera.position.set(0.8, 1.5, 4);
 
         // カメラコントローラーを作成
         const controls = new THREE.OrbitControls(camera, document.body); 
@@ -41,29 +41,48 @@
         // シーンに追加
         scene.add(directionalLight2);
 
-        // helper
-        const gridHelper = new THREE.GridHelper(2,10); // size, step
-        scene.add(gridHelper);
-        const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
-        scene.add(axisHelper);
-        var textureLoader = new THREE.TextureLoader();
-        var texture = textureLoader.load("jyari.jpg");
-        var mat = new THREE.MeshPhongMaterial();
-        mat.map = texture;
+        
+        var textureLoader1 = new THREE.TextureLoader();
+        var texture1 = textureLoader1.load("jyari.jpg");
+        var mat1 = new THREE.MeshPhongMaterial();
+        mat1.map = texture1;
+        var textureLoader2 = new THREE.TextureLoader();
+        var texture2 = textureLoader2.load("iwa.jpg");
+        var mat2 = new THREE.MeshPhongMaterial();
+        mat2.map = texture2;
         
         // 平面を作成
         var planeGeometry = new THREE.PlaneGeometry(5,5,5,5);
         
-        var plane = new THREE.Mesh(planeGeometry,mat);
+        var plane = new THREE.Mesh(planeGeometry,mat1);
         plane.rotation.set( -Math.PI/2, 0, 0 );
         plane.position.set(0,0,0);
 
-        
+        var cylinderGeometry = new THREE.CylinderGeometry( 0.1, 0.2, 0.2, 10 );
+        var cylinder = new THREE.Mesh( cylinderGeometry, mat2 );
+        cylinder.position.set( 0, 0.1, 0 );
+        scene.add( cylinder );
+        var geometry = new THREE.DodecahedronGeometry(0.14);
+        var box = new THREE.Mesh(geometry, mat2);
+        box.position.set(0,0.125,0);
+        scene.add(box);
+        var geometry = new THREE.IcosahedronGeometry(0.15);
+        var box2 = new THREE.Mesh(geometry, mat2);
+        box2.position.set(0.8,0.11,0.5);
+        scene.add(box2);
+        var geometry = new THREE.DodecahedronGeometry(0.15);
+        var box3 = new THREE.Mesh(geometry, mat2);
+        box3.position.set(0.8,0.11,0.5);
+        scene.add(box3);
 
         //全体のオブジェクト
 
         const all = new THREE.Group();
         all.add(plane);//平面を追加
+        all.add(box);
+        all.add(box2);
+        all.add(box3);
+        all.add(cylinder);
         
         all.position.set(0,0,0);//全体グループの原点の位置
         scene.add(all); 
@@ -76,7 +95,7 @@
           renderer.render(scene, camera);
           requestAnimationFrame(update);
 
-          
+          all.rotation.x += 0.0001;
         }
       }
     </script>
