@@ -60,11 +60,11 @@
 
         var cylinderGeometry = new THREE.CylinderGeometry( 0.3, 0.4, 0.5, 10 );
         var cylinder = new THREE.Mesh( cylinderGeometry, mat2 );
-        cylinder.position.set( 0, 0.1, 0 );
+        cylinder.position.set( -0.2, 0.1, -0.5 );
         scene.add( cylinder );
-        var geometry = new THREE.DodecahedronGeometry(0.3);
+        var geometry = new THREE.DodecahedronGeometry(0.8);
         var box = new THREE.Mesh(geometry, mat2);
-        box.position.set(0,0.125,0);
+        box.position.set(-0.2,0.125,-0.5);
         scene.add(box);
         var geometry = new THREE.IcosahedronGeometry(1);
         var box2 = new THREE.Mesh(geometry, mat2);
